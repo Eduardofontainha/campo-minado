@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campo Minado</title>
+    <title>Campo Minado 3D</title>
     <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="src/componentes/Tabela.js"></script>
 </head>
 <body>
-    <layout-campo></layout-campo>
+
+    <div id="painel-instrucoes">
+        <h3>🎮 COMANDOS DO JOGO</h3>
+        <p>🖱️ <strong>Clique Esquerdo:</strong> Revelar quadrado (Cuidado com as bombas!)</p>
+        <p>🚩 <strong>Clique Direito:</strong> Marcar / Desmarcar bandeira</p>
+        <p>🔄 <strong>Botão Reiniciar:</strong> Limpa o tabuleiro e recomeça o tempo</p>
+    </div>
+
+    <div id="hud">
+        <div class="display">💣 Minas: <span id="contador-minas">20</span></div>
+        <button id="btn-reiniciar">🔄 Reiniciar</button>
+        <div class="display">⏱️ Tempo: <span id="cronometro">000</span></div>
+    </div>
+
+    <div id="cena-3d">
+        <layout-campo></layout-campo>
+    </div>
+
     <script type="module" src="./src/main.js"></script>
 </body>
 </html>
