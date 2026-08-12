@@ -46,6 +46,7 @@ h1 {
   letter-spacing: 0.5px;
   text-align: center;
 }
+
 #painel-instrucoes p {
   margin: 10px 0;
   font-size: 13px;
@@ -63,6 +64,7 @@ h1 {
   box-sizing: border-box;
   box-shadow: 0 4px 15px rgba(26, 162, 96, 0.3);
 }
+
 #selecionar-dificuldade {
   padding: 10px 20px;
   font-size: 13px;
@@ -75,6 +77,7 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s;
 }
+
 .display {
   background: rgba(0, 0, 0, 0.2);
   color: #ffffff;
@@ -101,6 +104,7 @@ h1 {
 #btn-reiniciar:hover {
   transform: scale(1.02);
 }
+
 #btn-reiniciar:active {
   transform: scale(0.98);
 }
@@ -118,18 +122,19 @@ h1 {
 }
 
 layout-campo {
-    position: absolute;
-    display: grid !important; 
-    top: 50%;
-    left: 50%;
-    width: clamp(280px, 65vmin, 532px) !important;
-    height: clamp(280px, 65vmin, 532px) !important;
-    box-sizing: border-box;
-    transform: translate(-50%, -50%) rotateX(42deg) rotateZ(-22deg) scale(var(--escala-tabuleiro, 1));
-    transform-style: preserve-3d;
-    filter: drop-shadow(-25px 40px 20px rgba(0, 0, 0, 0.6));
-    transition: transform 0.4s ease;
-    --escala-tabuleiro: clamp(0.5, 60vmin / 532px, 1);
+  position: absolute;
+  display: grid !important;
+  top: 50%;
+  left: 50%;
+  margin: 0 auto;
+  width: clamp(140px, 65vw, 532px) !important;
+  height: clamp(140px, 65vw, 532px) !important;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%) rotateX(42deg) rotateZ(-22deg) scale(var(--escala-tabuleiro, 1));
+  transform-style: preserve-3d;
+  filter: drop-shadow(-25px 40px 20px rgba(0, 0, 0, 0.6));
+  transition: transform 0.4s ease;
+  --escala-tabuleiro: clamp(0.5, 60vmin / 532px, 1);
 }
 
 layout-campo::before {
@@ -145,20 +150,21 @@ layout-campo::before {
 }
 
 layout-campo::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 16px; 
-    background: #3e2d1d;
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: #3e2d1d;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
 }
 
 #cena-3d:hover layout-campo {
   transform: translate(-50%, -50%) rotateX(38deg) rotateZ(-18deg) scale(var(--escala-tabuleiro, 1));
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -207,6 +213,7 @@ layout-campo::after {
 .modal.vitoria #modal-titulo {
   color: #2ecc71;
 }
+
 .modal.derrota #modal-titulo {
   color: #e74c3c;
 }
@@ -249,11 +256,13 @@ layout-campo::after {
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
+
 #controle-mobile-modo {
   display: none;
   width: 100%;
@@ -290,51 +299,48 @@ layout-campo::after {
     grid-template-columns: 1fr;
     height: auto;
     overflow-y: auto;
-    padding: 15px; 
+    padding: 15px;
+    overflow-x: hidden !important;
   }
 
   .menu-lateral {
-    grid-column: 1;
-    order: 1;
+    width: 90%;
+    margin: 0 auto;
   }
 
   #cena-3d {
     grid-column: 1;
     order: 2;
-    height: 50vh;       
-    min-height: 320px;  
+    height: auto;
+    min-height: 320px;
     width: 100%;
-    margin-top: 10px;
-    padding: 0;         
-  }
-
-    
-  layout-campo {
-    /* ESSENCIAL: Mantém as 10 colunas vivas e impede que elas fiquem em linha vertical */
-    display: grid !important; 
-    
+    margin-top: 15px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    top: auto;
-    left: auto;
-    
-    /* Trava o tamanho físico idêntico ao do desktop para o JS não quebrar as proporções */
-    width: 532px !important;
-    height: 532px !important;
-    box-sizing: border-box;
-    
-    /* Força o pivô tridimensional a ficar travado rigidamente no centro exato do bloco */
-    transform-origin: center center;
-    
-    /* Aplica a centralização, inclinação e o redimensionamento perfeitamente unificados */
-    transform: rotateX(42deg) rotateZ(-22deg) scale(0.55) !important;
-    transform-style: preserve-3d;
-    
-    margin: 0 auto; /* Ajuda o flexbox a garantir a centralização horizontal exata */
+    overflow: hidden;
   }
 
+  layout-campo {
+    display: grid !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: clamp(200px, 65vw, 340px) !important;
+    height: clamp(200px, 65vw, 340px) !important;
+    transform: rotateX(42deg) rotateZ(-22deg) scale(0.9) !important;
+    transform-style: preserve-3d;
+    margin: 0 auto !important;
+  }
+
+  #cena-3d:hover layout-campo {
+    transform: rotateX(42deg) rotateZ(-22deg) scale(0.9) !important;
+  }
 
   layout-campo::after {
-    height: 14px;
+    height: 12px;
   }
 
   #painel-instrucoes {
@@ -342,10 +348,14 @@ layout-campo::after {
   }
 
   #hud {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
+  }
+
+  #hud .display,
+  #hud button,
+  #hud select {
+    text-align: center;
   }
 
   #controle-mobile-modo {
@@ -355,6 +365,7 @@ layout-campo::after {
   #instrucao-revelar {
     font-size: 0;
   }
+
   #instrucao-revelar::after {
     content: "📱 Toque: Revelar quadrado no Modo Revelar ⛏️";
     font-size: 13px;
@@ -363,6 +374,7 @@ layout-campo::after {
   #instrucao-bandeira {
     font-size: 0;
   }
+
   #instrucao-bandeira::after {
     content: "🚩 Modo Bandeira: Ative abaixo para marcar bombas";
     font-size: 13px;
