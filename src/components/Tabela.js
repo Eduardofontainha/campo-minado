@@ -13,11 +13,12 @@ export default class Tabela extends HTMLElement {
         estilo.textContent = `
         :host {
             display: grid;
-            grid-template-columns: repeat(10, 50px);
+            grid-template-columns: repeat(10, 1fr);
             gap: 2px;
             background: transparent; 
             padding: 6px; 
-            border: none; 
+            border: none;
+            container-type: inline-size;  
             box-sizing: border-box;
             transform-style: preserve-3d; 
         }
