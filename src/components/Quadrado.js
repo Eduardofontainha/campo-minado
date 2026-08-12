@@ -9,8 +9,14 @@ export default class Quadrado extends HTMLElement {
   };
 
   #coresNumeros = {
-    1: "#0000FF", 2: "#008000", 3: "#FF0000", 4: "#000080",
-    5: "#800000", 6: "#008080", 7: "#000000", 8: "#808080",
+    1: "#0000FF",
+    2: "#008000",
+    3: "#FF0000",
+    4: "#000080",
+    5: "#800000",
+    6: "#008080",
+    7: "#000000",
+    8: "#808080",
   };
 
   constructor() {
@@ -42,8 +48,9 @@ export default class Quadrado extends HTMLElement {
     shadow.innerHTML = `
     <style>
       div {
-        width: 50px;
-        height: 50px;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
         background: #c0c0c0;
         border: 4px solid;
         border-color: #fff #808080 #808080 #fff;
@@ -54,7 +61,7 @@ export default class Quadrado extends HTMLElement {
         cursor: pointer;
         font-family: 'Courier New', monospace;
         font-weight: 900;
-        font-size: 24px;
+        font-size: 4.5cqw;
         user-select: none;
         transform: translateZ(6px);
         box-shadow: -2px 2px 5px rgba(0,0,0,0.4);
@@ -83,11 +90,11 @@ export default class Quadrado extends HTMLElement {
       this.dispatchEvent(
         new CustomEvent("clicou", {
           detail: { linha: this.#estado.linha, coluna: this.#estado.coluna },
-          bubbles: true, composed: true
-        })
+          bubbles: true,
+          composed: true,
+        }),
       );
     });
-
 
     div.addEventListener("contextmenu", (e) => {
       e.preventDefault();
@@ -96,8 +103,9 @@ export default class Quadrado extends HTMLElement {
       this.dispatchEvent(
         new CustomEvent("marcou", {
           detail: { linha: this.#estado.linha, coluna: this.#estado.coluna },
-          bubbles: true, composed: true
-        })
+          bubbles: true,
+          composed: true,
+        }),
       );
     });
 
@@ -115,7 +123,8 @@ export default class Quadrado extends HTMLElement {
         div.textContent = "💣";
       } else if (this.#estado.minasVizinhas > 0) {
         div.textContent = this.#estado.minasVizinhas;
-        div.style.color = this.#coresNumeros[this.#estado.minasVizinhas] || "black";
+        div.style.color =
+          this.#coresNumeros[this.#estado.minasVizinhas] || "black";
       } else {
         div.textContent = "";
       }
